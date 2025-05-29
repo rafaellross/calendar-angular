@@ -34,6 +34,7 @@
       "endTime": "16:00",
       "description": "Nessa aula aprenderemos como utilizar o JWT (Json Web Token) juntamente com o Spring Security para podermos controlar e gerenciar nosso fluxo de autenticação e autorização em nossa API RESTful.",
       "expertsId": 1,
+      
       "id": 1
     },
     {
@@ -143,6 +144,34 @@
       "description": "Nos tempos atuais, a palavra \"inovar\" vem sendo utilizada a todo momento, porém, raramente o ato de inovar realmente acontece. Nesta aula, você vai aprender que para inovar não é necessario ser o CEO de uma Startup, ou estar em uma equipe de uma multinacional. Inovação é simplicidade. Utilizando o livro \"Pense Simples\", do fundador da SambaTech Gustavo Caetano, iremos construir alguns insights para ajuda-lo a realmente inovar no dia a dia de desenvolvimento.",
       "expertsId": 5,
       "id": 13
+    },
+    {
+      "title": "Na Fila",
+      "date": "2025-05-28",
+      "initTime": "08:00",
+      "endTime": "12:00",
+      "description": "Test",
+      "expertsId": 1,
+      "color": "#FF5733",
+      "id": 14
+    },
+    {
+      "title": "Almoco",
+      "date": "2025-05-28",
+      "initTime": "12:00",
+      "endTime": "13:00",
+      "description": "Almoco",
+      "expertsId": 1,
+      "id": 15
+    },
+    {
+      "title": "Na Fila",
+      "date": "2025-05-28",
+      "initTime": "13:00",
+      "endTime": "17:00",
+      "description": "Na Fila",
+      "expertsId": 1,
+      "id": 16
     }
   ]
 }

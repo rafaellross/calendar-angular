@@ -7,6 +7,8 @@ import { format, isAfter, isBefore, isSameDay, isSameMonth, parse, parseISO } fr
 import { Schedule } from '../schedule';
 import { ScheduleService } from '../schedule.service';
 
+
+
 @Component({
   selector: 'app-schedules-list',
   templateUrl: './schedules-list.component.html',
@@ -19,7 +21,7 @@ export class SchedulesListComponent implements OnInit {
   CalendarView = CalendarView;
   viewDate = new Date();
   activeDayIsOpen = false;
-  view = CalendarView.Month;
+  view = CalendarView.Week;
   events: CalendarEvent[] = [];
 
   modalData!: { schedule: Schedule };
@@ -41,33 +43,6 @@ export class SchedulesListComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 
-  onDayClick({ date, events }: MonthViewDay) {
-    if (isSameMonth(date, this.viewDate)) {
-      if (events.length === 0 || (isSameDay(this.viewDate, date) && this.activeDayIsOpen)) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
-
-      this.viewDate = date;
-    }
-  }
-
-  onEventClick(event: CalendarEvent) {
-    this.modalData = { schedule: event.meta };
-    this.modal.open(this.modalContent, { size: 'md' });
-  }
-
-  onSegmentClick(date: Date) {
-    if (isAfter(date, new Date())) {
-      this.router.navigate(['schedules/new'], {
-        queryParams: {
-          date: format(date, 'yyyy-MM-dd'),
-          initTime: format(date, 'HH:mm')
-        }
-      });
-    }
-  }
 
   onBeforeRenderWeek({ hourColumns }: CalendarWeekViewBeforeRenderEvent) {
     const todayDate = new Date();
@@ -110,8 +85,8 @@ export class SchedulesListComponent implements OnInit {
       end: parse(schedule.endTime, 'HH:mm', parsedDate),
       cssClass: 'event-body',
       color: {
-        primary: 'var(--purple)',
-        secondary: 'var(--bg-purple-alpha)'
+        primary: schedule.color || 'var(--bg-purple)',
+        secondary: schedule.color || 'var(--bg-purple-alpha)'
       },
       meta: schedule
     }

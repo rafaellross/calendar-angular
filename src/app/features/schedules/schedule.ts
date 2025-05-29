@@ -6,4 +6,5 @@ export interface Schedule {
     endTime: string;
     description: string;
     expertsId: number;
+    color?: string;
 }
