@@ -1,6 +1,8 @@
 <div class="row my-4">
     <div class="col-md-4 mb-3 mb-sm-0 text-center">
-        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle') }}</h3>
+        <h3>
+            {{ viewDate | calendarDate:(view + 'ViewTitle'):'pt-BR' }}
+        </h3>
     </div>
 
     <div class="col-md-4">
@@ -19,7 +21,19 @@
         </div>
     </div>
 </div>
-
+<ng-template #customHeaderTemplate let-days="days">
+  <div class="calendar-header row">
+    <div class="col text-center" *ngFor="let day of days">
+      <span>{{ day.date | date:'EEEE':'':'pt-BR' }}</span>
+      <br>
+      <span>{{ day.date | date:'dd/MM' }}</span>
+      <br>
+      <button class="btn btn-sm btn-primary mt-2" (click)="alert(day)">
+        Trocar
+      </button>
+    </div>
+  </div>
+</ng-template>
 <div [ngSwitch]="view">
     <mwl-calendar-week-view
         *ngSwitchCase="CalendarView.Week"
@@ -28,6 +42,8 @@
         [dayStartHour]="6"
         [dayEndHour]="23"
         (beforeViewRender)="onBeforeRenderWeek($event)"        
+        [weekStartsOn]="1"
+        [headerTemplate]="customHeaderTemplate"
         >
     </mwl-calendar-week-view>
 </div>

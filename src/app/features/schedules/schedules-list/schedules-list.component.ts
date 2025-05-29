@@ -15,7 +15,9 @@ import { ScheduleService } from '../schedule.service';
   styleUrls: ['./schedules-list.component.css']
 })
 export class SchedulesListComponent implements OnInit {
-
+alert(day: any): void {
+  window.alert(JSON.stringify(day));
+}
   @ViewChild('modalContent', { static: true }) modalContent!: TemplateRef<any>;
 
   CalendarView = CalendarView;
